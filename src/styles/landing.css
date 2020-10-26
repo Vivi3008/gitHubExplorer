@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: rgb(148, 144, 144) url('../assets/github-background.svg') no-repeat top right;
+    font-family: 'Trispace', sans-serif;
+}
+
+h1 {
+    font-size: 25px;
+}
+
+.main {
+    margin: 50px 100px;
+}
+
+span {
+    padding: 5px;
+}
+
+form {
+    background: #4e4b4b;
+    color: white;
+    box-shadow: 2px 2px 5px 0px rgb(61, 57, 57);
+    width: 350px;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgb(196, 185, 185);
+}
+
+.main form .contInput {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    margin-top: 10px;
+    width: 250px;
+    border: 1px solid white;
+    background: rgb(54, 51, 51);
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+button {
+    background: none;
+    border: none;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+    background: none;
+    transition: all 500ms;
+}
+
+img:hover {
+    transform: scale(1.3);
+    cursor: pointer;
+}
