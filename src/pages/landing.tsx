@@ -1,49 +1,61 @@
-import React , { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import React , { FormEvent, FormEventHandler, useState } from 'react'
+
 import axios from 'axios'
 import '../styles/landing.css'
 import lupa from '../assets/lupa.svg'
-import { clear } from 'console'
+import { cleanup } from '@testing-library/react'
+
 
 interface User {
+    avatar_url: string;
     name: string;
     bio: string;
     location: string;
-    repos_url:string;
-}
-
-interface UserInput {
-    user: string;
+    html_url:string;
 }
 
 export default function Landing(){
-    const { register, handleSubmit } = useForm()
-    const [user, setUser] = useState<User>()
+    const [ user, setUser ] = useState('')
+    const [ dataUser, setDataUser ] = useState<User>()
 
-        async function onSubmit(data: UserInput){
-            await axios.get(`https://api.github.com/users/${data.user}`)
-            .then(res => {
-                setUser(res.data)
-                console.log(user)
-            }) 
+   
+       async function fecthApiGitHub(){
+            await axios.get(`https://api.github.com/users/${user}`)
+             .then( res => {
+                 setDataUser(res.data)
+             })
+             .catch(error => console.error("Erro na requisição", error))
+        }
 
-        }    
+       function clean(){
+           setUser("")
+       }
 
 
     return (
-
         <div className="main">
             <h1>Explorar usuários do GitHub</h1>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <main >
                 <span>Usuário:</span>
                 <div className="contInput">
-                    <input type="text" name="user" ref={register()}/>
-                    <button type="submit"><img src={lupa} alt="Pesquisa"/></button>
+                    <input type="text" name={user} onChange={ e => setUser(e.target.value)} 
+                    onClick={clean}/>
+                    <button onClick={fecthApiGitHub}><img src={lupa} alt="Pesquisa"/></button>
                 </div>
-            </form>
+            </main>
 
-            </div>
+        { !dataUser ? null : (
+             <div className="contentUser">
+             <img className="imgBio" src={dataUser!.avatar_url} alt={`Imagem de ${dataUser!.name}`}/>
+             <h2>{dataUser!.name}</h2>
+             <p>{dataUser!.bio}</p>
+             <p>{dataUser!.location}</p>
+             <a href={dataUser!.html_url} target="_blank" rel="noreferrer noopener">Visitar </a>
+         </div>
+         ) }
+           
+        </div>
         
     )
 }
