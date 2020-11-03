@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import axios from 'axios'
 import '../styles/landing.css'
@@ -20,7 +21,9 @@ export default function Landing(){
     const [ url, setUrl ] = useState('https://api.github.com/users/octocat')
     const [ dataUser, setDataUser ] = useState<User>()
     const [ isLoading, setIsLoading ] = useState(false)
-  
+    
+    const history = useHistory()
+
     useEffect(()=>{
       const fecthApiGitHub = async () =>{
             setIsLoading(true)
@@ -30,8 +33,9 @@ export default function Landing(){
                 setIsLoading(false) 
             })
             .catch(error => {
-               alert('Usuário não encontrado!')
-                console.error("Erro na requisição", error)
+               alert('User not found!')
+                console.error("Request error!", error)
+                setIsLoading(false)
             }) 
        }
        fecthApiGitHub()
@@ -40,12 +44,12 @@ export default function Landing(){
 
     return (
         <div className="main">
-            <h1>Explorar usuários do GitHub</h1>
-
+            
             <main >
-                <span>Usuário:</span>
+            <h1>Explore GitHub Users</h1>
                 <div className="contInput">
                     <input type="text"
+                    placeholder="Type your GitHub user"
                     value={user} 
                     onChange={ e => {
                         setUser(e.target.value)
@@ -65,7 +69,14 @@ export default function Landing(){
                 <div className="spinner"></div>
             ) : (
             <div className="contentUser">
-                <img className="imgBio" src={dataUser?.avatar_url} alt={`Imagem de ${dataUser?.name}`}/>
+               
+                    <div className="imgPerfil">
+                    <img className="imgBio" 
+                        src={dataUser?.avatar_url}
+                        alt={`Foto perfil ${dataUser?.name}`}/>
+                    </div>
+                    
+            
                 <div className="contentText">
                     <h2>{dataUser?.name}</h2>
                     <span>{dataUser?.login}</span>
@@ -75,13 +86,13 @@ export default function Landing(){
                         <p>{dataUser?.location}</p>
                         <p>{dataUser?.company}</p>
                         <hr/>
-                        <div className="button">
+                        
                             <a href={dataUser?.html_url} 
                                 target="_blank" 
                                 rel="noreferrer noopener">
                                     Visitar 
                             </a>
-                        </div>
+                        
                         
                     </div>
                     
