@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: rgb(148, 144, 144) url('../assets/github-background.svg') no-repeat top right;
+    background: #26243D url('../assets/github-background.svg') no-repeat top right;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -28,7 +28,7 @@ main {
     border: 1px solid rgb(196, 185, 185);
 }
 
-.main main .contInput {
+.main .contInput {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,6 +58,9 @@ img {
 }
 
 .imgBio {
+    position: absolute;
+    bottom: 75%;
+    left: 32%;
     width: 200px;
     height: 200px;
     border-radius: 100%;
@@ -71,27 +74,74 @@ img {
 
 .main .contentUser {
     position: relative;
-    margin: 50px auto;
-    padding: 15px;
-    background: #807C7D;
+    margin: 100px auto;
+    padding: 30px;
+    background: #2F2D47;
     width: 500px;
     border-radius: 8px;
+    opacity: 0.7;
+}
+
+.main .contentUser .contentText {
+    color: white;
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    box-shadow: 2px 2px 2px rgb(80, 75, 75);
+    justify-content: space-between;
 }
 
-.main .contentUser a {
+.main .contentUser .contentText h2 {
+    margin: 0px;
+    font-size: 18pt;
+    font-weight: bold;
+}
+
+.main .contentUser .contentText span {
+    font-size: 12pt;
+    opacity: 0.7;
+}
+
+.main .contentUser .contentText .about {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.main .contentUser .contentText .about h3 {
+    font-size: 15pt;
+    margin-bottom: 30px;
+}
+
+.main .contentUser .contentText .about p {
+    line-height: 10px;
+    opacity: 0.7;
+    font-size: 12pt;
+}
+
+.main .contentUser .contentText .about hr {
+    margin: 30px 10px;
+    width: 400px;
+    opacity: 0.1;
+}
+
+.main .contentUser .contentText .about .button {
+    margin: auto;
+    width: 130px;
+    background: rgb(64, 65, 90);
+    border-radius: 50px;
+    padding: 15px;
+    transition: all 500ms;
+    cursor: pointer;
+}
+
+.main .contentUser .contentText .about .button:hover {
+    transform: scale(1.1);
+}
+
+.main .contentUser .contentText .about a {
     text-decoration: none;
     color: white;
     font-weight: bold;
-    transition: all 500ms;
-}
-
-.main .contentUser a:hover {
-    transform: scale(1.3);
 }
 
 

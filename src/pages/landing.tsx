@@ -3,18 +3,15 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import '../styles/landing.css'
 import lupa from '../assets/lupa.svg'
-import close from '../assets/close.svg'
 
 interface User {
+    login:string;
     avatar_url: string;
     name: string;
     bio: string;
     location: string;
     html_url:string;
-    blog: string;
-    twitter_username: string;
     company: string;
-    hireable: boolean;
 }
 
 
@@ -68,15 +65,27 @@ export default function Landing(){
                 <div className="spinner"></div>
             ) : (
             <div className="contentUser">
-            <img className="imgBio" src={dataUser?.avatar_url} alt={`Imagem de ${dataUser?.name}`}/>
-            <h2>{dataUser?.name}</h2>
-            <p>{dataUser?.bio}</p>
-            <p>{dataUser?.location}</p>
-            <a href={dataUser?.html_url} target="_blank" rel="noreferrer noopener">Visitar </a>
-            <a href={dataUser?.blog} target="_blank" rel="noreferrer noopener">Blog</a>
-            <a href={dataUser?.twitter_username} target="_blank" rel="noreferrer noopener">Twitter</a>
-            <p>{dataUser?.company}</p>
-            
+                <img className="imgBio" src={dataUser?.avatar_url} alt={`Imagem de ${dataUser?.name}`}/>
+                <div className="contentText">
+                    <h2>{dataUser?.name}</h2>
+                    <span>{dataUser?.login}</span>
+                    <div className="about">
+                        <h3>About me</h3>
+                        <p>{dataUser?.bio}</p>
+                        <p>{dataUser?.location}</p>
+                        <p>{dataUser?.company}</p>
+                        <hr/>
+                        <div className="button">
+                            <a href={dataUser?.html_url} 
+                                target="_blank" 
+                                rel="noreferrer noopener">
+                                    Visitar 
+                            </a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
             </div>    
             ) }
             
