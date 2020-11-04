@@ -28,7 +28,7 @@ export default function Landing(){
       const fecthApiGitHub = async () =>{
             setIsLoading(true)
             await axios.get(url)
-            .then( ({data}) => {
+            .then( ({data} ) => {
                 setDataUser(data)  
                 setIsLoading(false) 
             })
