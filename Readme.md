@@ -1,5 +1,5 @@
 <h1 align="center"> 🧑‍💻 Explore GitHub Users</h1>
-<p align="center">![](https://img.shields.io/netlify/d3559da4-c7b2-48b9-95a6-ad1d0b8b88b1?logo=Netlify)</p>
+![](https://img.shields.io/netlify/d3559da4-c7b2-48b9-95a6-ad1d0b8b88b1?logo=Netlify)
 
 Single Page feito em ReactJs que utiliza a API do GitHub para buscar usuários pelo nome de login.
 
