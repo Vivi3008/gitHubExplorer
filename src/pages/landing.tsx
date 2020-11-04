@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom'
-
 import axios from 'axios'
 import '../styles/landing.css'
 import lupa from '../assets/lupa.svg'
@@ -22,7 +20,6 @@ export default function Landing(){
     const [ dataUser, setDataUser ] = useState<User>()
     const [ isLoading, setIsLoading ] = useState(false)
     
-    const history = useHistory()
 
     useEffect(()=>{
       const fecthApiGitHub = async () =>{
